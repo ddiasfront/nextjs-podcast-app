@@ -1,5 +1,14 @@
 const express = require('express')
 const next = require('next')
+require('dotenv').config()
+const isOnline = require('is-online');
+const SpotifyWebApi = require('spotify-web-api-node');
+
+
+
+(async () => {
+  appOnline = await isOnline();
+})();
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({
@@ -9,7 +18,29 @@ const handle = app.getRequestHandler()
 
 app.prepare()
   .then(() => {
+
     const server = express()
+    
+    if (appOnline) {
+      var spotifyApi = new SpotifyWebApi({
+        clientId: process.env.ID,
+        clientSecret: process.env.SECRET
+      });
+
+      spotifyApi.clientCredentialsGrant().then(
+        function (data) {
+          console.log('The access token is ' + data.body['access_token']);
+          spotifyApi.setAccessToken(data.body['access_token']);
+        },
+        function (err) {
+          console.log('Something went wrong!', err);
+        }
+      );
+
+    } else {
+      console.log("Houston we have a problem", appOnline);
+    }
+
 
     server.get('/p/:id', (req, res) => {
       const actualPage = '/post'
@@ -23,12 +54,13 @@ app.prepare()
       return handle(req, res)
     })
 
-    server.get('/spotify/:url'), (req, res) => {
+    server.get('/spotify/:url', (req, res) => {
       const actualPage = '/spotify'
-      const queryParams =
+      const queryParams = {
+        url: req.params.url
+      }
       app.render(req, res, actualPage, queryParams)
     })
-
 
     server.listen(3000, (err) => {
       if (err) throw err
