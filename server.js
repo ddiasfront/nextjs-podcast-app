@@ -20,13 +20,14 @@ app.prepare()
   .then(() => {
 
     const server = express()
-    
-    if (appOnline) {
+
       var spotifyApi = new SpotifyWebApi({
         clientId: process.env.ID,
         clientSecret: process.env.SECRET
       });
 
+    server.get('/p/:id', (req, res) => {
+      
       spotifyApi.clientCredentialsGrant().then(
         function (data) {
           console.log('The access token is ' + data.body['access_token']);
@@ -36,13 +37,7 @@ app.prepare()
           console.log('Something went wrong!', err);
         }
       );
-
-    } else {
-      console.log("Houston we have a problem", appOnline);
-    }
-
-
-    server.get('/p/:id', (req, res) => {
+      
       const actualPage = '/post'
       const queryParams = {
         id: req.params.id

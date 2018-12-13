@@ -1,6 +1,7 @@
 import Layout from '../components/Layout'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
+import {Title, Text} from '../components/atoms/TextTitle';
 
 const PostLink = (props) => (
   <li>
@@ -12,30 +13,21 @@ const PostLink = (props) => (
 
 const Index = (props) => (
   <Layout>
-    <ul>
-      {
-        props.shows.map(({ show }) => 
-          <li key={show.id}>
-            <a>{show.name}</a>
-        </li>
-        )
-      }
-    </ul>
-    <PostLink id="hello-nextjs" title="Hello Next.js" />
-    <PostLink id="learn-nextjs" title="Learn Next.js is awesome" />
-    <PostLink id="deploy-nextjs" title="Deploy apps with Zeit" />
+    <Title textType="H1">Qualquer coisa</Title>
+    <Title textType="p">Qualquer coisa</Title>
+    <Title textType="span">Qualquer coisa</Title>
   </Layout>
 )
 
-Index.getInitialProps = async function () {
-  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
-  const data = await res.json()
+// Index.getInitialProps = async function () {
+//   const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
+//   const data = await res.json()
 
-  console.log(`Show data fetched. Count: ${data.length}`)
+//   console.log(`Show data fetched. Count: ${data.length}`)
 
-  return {
-    shows: data
-  }
-}
+//   return {
+//     shows: data
+//   }
+// }
 
 export default Index
