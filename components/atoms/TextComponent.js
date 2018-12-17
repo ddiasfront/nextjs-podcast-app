@@ -1,12 +1,18 @@
 import styled from 'styled-components'
+import {textColorPallete} from '../../globalStyles'
+
+const colorsPossible = Object.keys(textColorPallete);
+
+const blockColor = (color) => (
+  colorsPossible.every(colorPossible => colorPossible !== color)
+)
 
 const TextBuilder = (props) => {
 
   const textTypeLow = typeof(props.textType) == 'string' ? props.textType.toLowerCase() : props.textType.toString().toLowerCase()
 
   const StyledText = styled(textTypeLow)`
-    font-family: 'Open Sans Condensed', sans-serif;
-    color:  ${props => props.textColor ? props.textColor : '#000'};
+    color:  ${props => textColorPallete[props.textColor]};
     font-weight: bold;
     font-size: ${props => props.textSize};
     text-align: ${props => props.textTextAlign};
@@ -19,7 +25,7 @@ const TextBuilder = (props) => {
 
   return (
     <StyledText
-      textColor={props.textColor ? props.textColor : false}
+      textColor={blockColor(props.textColor) ? 'dark' : props.textColor}
       textType={props.textType}
       textSize={props.textSize ? props.textSize : false}
       textWeight={props.textWeight ? props.textWeight : false}

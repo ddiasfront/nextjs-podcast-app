@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { LinkComponent } from '../components/atoms/LinkComponent';
 
 const linkStyle = {
   marginRight: 15
@@ -6,12 +6,12 @@ const linkStyle = {
 
 const Header = () => (
     <div>
-        <Link href="/">
+        <LinkComponent href="/" linkColor="medium">
           <a style={linkStyle}>Home</a>
-        </Link>
-        <Link href="/about">
+        </LinkComponent>
+        <LinkComponent href="/about" linkColor="medium">
           <a style={linkStyle}>About</a>
-        </Link>
+        </LinkComponent>
     </div>
 )
 
