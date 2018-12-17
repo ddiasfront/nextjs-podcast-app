@@ -1,7 +1,8 @@
 import Layout from '../components/Layout'
+import { TextComponent } from '../components/atoms/TextComponent';
 
 export default () => (
   <Layout>
-    <p>This is the about page</p>
+    <TextComponent textType="H1">This is the about page</TextComponent>
   </Layout>
 )

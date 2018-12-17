@@ -1,21 +1,15 @@
 import Layout from '../components/Layout'
-import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
-import {Title, Text} from '../components/atoms/TextTitle';
+import { TextComponent } from '../components/atoms/TextComponent';
+import { LinkComponent } from '../components/atoms/LinkComponent';
 
-const PostLink = (props) => (
-  <li>
-    <Link as={`/p/${props.id}`} href={`/post?title=${props.title}`}>
-      <a>{props.title}</a>
-    </Link>
-  </li>
-)
 
 const Index = (props) => (
   <Layout>
-    <Title textType="H1">Qualquer coisa</Title>
-    <Title textType="p">Qualquer coisa</Title>
-    <Title textType="span">Qualquer coisa</Title>
+    <LinkComponent href="/about" linkColor="lighter">Ali é novo</LinkComponent>
+    <TextComponent textType="H1" textColor="yellow" textSize="18px">Qualquer coisa</TextComponent>
+    <TextComponent textType="p" textColor="red" textSize="14px">Qualquer coisa</TextComponent>
+    <TextComponent textType="span" textColor="grey" textSize="12px">Qualquer coisa</TextComponent>
   </Layout>
 )
 
