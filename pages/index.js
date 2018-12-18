@@ -1,7 +1,7 @@
-import Layout from '../components/Layout'
+import { Layout } from '../components'
 import fetch from 'isomorphic-unfetch'
-import { TextComponent } from '../components/atoms/TextComponent';
-import { LinkComponent } from '../components/atoms/LinkComponent';
+import  TextComponent from '../components/atoms/TextComponent';
+import  LinkComponent from '../components/atoms/LinkComponent';
 
 
 const Index = (props) => (

@@ -1,4 +1,4 @@
-import { LinkComponent } from '../components/atoms/LinkComponent';
+import { LinkComponent } from '../';
 
 const linkStyle = {
   marginRight: 15
