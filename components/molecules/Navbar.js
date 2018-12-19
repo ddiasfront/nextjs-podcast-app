@@ -15,4 +15,4 @@ const Navbar = () => (
     </div>
 )
 
-export default Navbar
+export  {Navbar}

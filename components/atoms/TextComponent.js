@@ -60,4 +60,4 @@ const TextComponent = (props) => {
   }
 }
 
-export default TextComponent
+export {TextComponent}

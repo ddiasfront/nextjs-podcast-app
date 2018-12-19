@@ -1,11 +1,8 @@
-//ATOMS
-export { default as LinkComponent } from './atoms/LinkComponent';
-export { default as TextComponent } from './atoms/TextComponent';
-export { default as Wrapper } from './atoms/Wrapper';
+import { LinkComponent } from './atoms/LinkComponent';
+import { TextComponent } from './atoms/TextComponent';
+import { Navbar } from './molecules/Navbar';
+import { Layout } from './organisms/Layout';
 
-//MOLECULES
-export { default as Navbar } from './molecules/Navbar';
-
-//ORGANISMS
-export { default as Layout } from './organisms/Layout';
-
+export {
+  LinkComponent, TextComponent, Navbar, Layout 
+}

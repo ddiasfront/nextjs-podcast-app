@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'next/router'
-import Layout from '../components/Layout.js'
+import {Layout} from '../components'
 
 class Page extends React.Component {
 

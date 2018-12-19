@@ -1,5 +1,5 @@
-import Layout from '../components/Layout'
-import { TextComponent } from '../components/atoms/TextComponent';
+import {Layout} from '../components';
+import {TextComponent} from '../components';
 
 export default () => (
   <Layout>

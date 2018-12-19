@@ -47,4 +47,4 @@ const LinkComponent = (props, href) => (
   </Link>
 )
 
-export default LinkComponent
+export {LinkComponent}

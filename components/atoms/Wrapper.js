@@ -9,4 +9,4 @@ const Wrapper = (props) => (
  <StyledDiv>{props.children}</StyledDiv>
 )
 
-export default Wrapper
+  export {Wrapper}
