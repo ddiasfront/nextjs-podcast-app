@@ -1,4 +1,4 @@
-import {Header} from '../'
+import {Navbar} from '../'
 import Head from 'next/head'
 
 const layoutStyle = {
@@ -15,7 +15,7 @@ const Layout = (props) => (
       <meta charSet="utf-8" />
       <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet"></link>
     </Head>
-    <Header />
+    <Navbar />
     {props.children}
   </div>
 )

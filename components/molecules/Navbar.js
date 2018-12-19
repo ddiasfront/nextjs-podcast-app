@@ -1,10 +1,10 @@
-import { LinkComponent } from '../';
+import { LinkComponent } from '..';
 
 const linkStyle = {
   marginRight: 15
 }
 
-const Header = () => (
+const Navbar = () => (
     <div>
         <LinkComponent href="/" linkColor="medium">
           <a style={linkStyle}>Home</a>
@@ -15,4 +15,4 @@ const Header = () => (
     </div>
 )
 
-export default Header
+export default Navbar
