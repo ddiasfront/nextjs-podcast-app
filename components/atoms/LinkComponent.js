@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
-const StyledLink = styled('span')`
+const StyledLink = styled('a')`
 color:  ${props => props.linkColor};
 font-weight: bold;
 cursor:pointer;
