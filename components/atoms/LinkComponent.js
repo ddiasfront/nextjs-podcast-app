@@ -1,9 +1,9 @@
+import React, { Component } from 'react';
 import styled from 'styled-components'
-import Link from 'next/link'
-import { textColorPallete } from '../../globalStyles'
+import PropTypes from 'prop-types';
 
-const StyledLink = styled('a')`
-color:  ${props => textColorPallete[props.linkColor]};
+const StyledLink = styled('span')`
+color:  ${props => props.linkColor};
 font-weight: bold;
 cursor:pointer;
 font-size: ${props => props.linkSize};
@@ -13,38 +13,50 @@ line-height: ${props => props.linkLineHeight};
 text-transform: ${props => props.linkTransform};
 word-spacing: ${props => props.linkWordSpacing};
 &:visited {
-  color: ${props => props.linkColor == 'dark' ? textColorPallete['darker']
-    : props.linkColor == 'medium' ? textColorPallete['dark'] :
-      props.linkColor == 'lighter' ? textColorPallete['light'] : textColorPallete['darker']
-  }
+  color: ${props => props.visitedLinkColor};
 };
 &:hover {
-  color:${props => props.linkColor == 'light' ? textColorPallete['darker']
-    : props.linkColor == 'darker' ? textColorPallete['light'] :
-      props.linkColor == 'medium' ? textColorPallete['darker'] : textColorPallete['darker']
-  } 
+  color:${props => props.hoverLinkColor}; 
+}
+&:active {
+  color:${props => props.activeLinkColor}; 
+}
 `;
 
-const colorsPossible = Object.keys(textColorPallete);
+class LinkComponent extends Component {
 
-const blockColor = (color) => (
-  colorsPossible.every(colorPossible => colorPossible !== color)
-)
+  constructor(props) {
+    super(props);
+    this.nextRouting = this.nextRouting.bind(this)
+  }
 
-const LinkComponent = (props, href) => (
-  <Link href={props.href}>
-    <StyledLink
-      linkColor={blockColor(props.linkColor) ? 'dark' : props.linkColor}
-      linkSize={props.linkSize ? props.linkSize : false}
-      linkAlign={props.linkAlign ? props.linkAlign : false}
-      linkIndent={props.linkIndent ? props.linkIndent : false}
-      linkLineHeight={props.linkLineHeight ? props.linkLineHeight : false}
-      linkTransform={props.linkTransform ? props.linkTransform : false}
-      linkWordSpacing={props.linkWordSpacing ? props.linkWordSpacing : false}
-    >
-      {props.children}
-    </StyledLink>
-  </Link>
-)
+  nextRouting() {
+    this.props.nextRouter ? this.props.nextRouter.push(this.props.href) : false
+  }
 
-export {LinkComponent}
+  render() {
+    return (
+        <StyledLink
+          onClick={this.props.nextRouter ? this.nextRouting : false}
+          linkColor={this.props.linkColor ? this.props.linkColor : false}
+          visitedLinkColor={this.props.visitedLinkColor ? this.props.visitedLinkColor : false}
+          hoverLinkColor={this.props.hoverLinkColor ? this.props.hoverLinkColor : false}
+          activeLinkColor={this.props.activeLinkColor ? this.props.activeLinkColor : false}
+          linkSize={this.props.linkSize ? this.props.linkSize : false}
+          linkAlign={this.props.linkAlign ? this.props.linkAlign : false}
+          linkIndent={this.props.linkIndent ? this.props.linkIndent : false}
+          linkLineHeight={this.props.linkLineHeight ? this.props.linkLineHeight : false}
+          linkTransform={this.props.linkTransform ? this.props.linkTransform : false}
+          linkWordSpacing={this.props.linkWordSpacing ? this.props.linkWordSpacing : false}
+        >
+          {this.props.children}
+        </StyledLink>
+    )
+  }
+}
+
+LinkComponent.propTypes = {
+
+}
+
+export { LinkComponent }
